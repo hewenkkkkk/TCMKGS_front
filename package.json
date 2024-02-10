@@ -1,0 +1,42 @@
+{
+  "name": "webtools",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "animate.css": "^4.1.1",
+    "axios": "^1.4.0",
+    "cytoscape": "^3.28.1",
+    "d3": "^7.8.5",
+    "echarts": "^5.4.3",
+    "element-plus": "^2.3.9",
+    "path": "^0.12.7",
+    "pinia": "^2.1.6",
+    "sass": "^1.64.1",
+    "three": "^0.155.0",
+    "vue": "^3.3.4",
+    "vue-echarts": "^6.6.8",
+    "vue-router": "^4.2.4",
+    "vue-slider-component": "^3.2.24",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.96",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "typescript": "^5.0.2",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-element-plus": "^0.8.0",
+    "unplugin-icons": "^0.16.5",
+    "unplugin-vue-components": "^0.25.1",
+    "vite": "^4.4.5",
+    "vue-loader": "^17.0.1",
+    "vue-tsc": "^1.8.5"
+  }
+}

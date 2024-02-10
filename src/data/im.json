@@ -1,0 +1,33 @@
+{
+    "nodes": [
+        {
+            "id": "node1",
+            "type": "Person",
+            "attributes": ""
+        },
+        {
+            "id": "node2",
+            "type": "Person",
+            "attributes": ""
+        },
+        {
+            "id": "node3",
+            "type": "Organization",
+            "attributes": ""
+        }
+    ],
+    "relationships": [
+        {
+            "source": "node1",
+            "target": "node2",
+            "type": "Colleague",
+            "attributes": ""
+        },
+        {
+            "source": "node1",
+            "target": "node3",
+            "type": "Employee",
+            "attributes": ""
+        }
+    ]
+}
