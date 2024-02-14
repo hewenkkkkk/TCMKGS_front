@@ -77,7 +77,7 @@ export default {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 500px; /* 宽度可以根据实际需求调整 */
+  width: 500px;
 }
 
 .form-group {
@@ -99,7 +99,7 @@ export default {
 }
 
 .form-group textarea {
-  resize: vertical; /* 允许用户垂直调整文本区域的大小 */
+  resize: vertical;
   height: 100px; /* 初始高度，可根据需要调整 */
 }
 

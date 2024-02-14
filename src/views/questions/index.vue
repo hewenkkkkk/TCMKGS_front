@@ -3,7 +3,7 @@
     <div v-for="item in questions" :key="item.question_id" class="task" @click="handleCardClick(item.question_id)">
       <div class="tags">
         <span class="tag">问题</span>
-        <button class="options"><!-- SVG图标 --></button>
+        <button class="options"></button>
       </div>
       <div class="content">
         <p>{{ truncateContent(item.content, 50) }}</p>
@@ -32,7 +32,8 @@
 </template>
 
 <script>
-import api from '../../api/api.js'; // 确保路径正确
+import api from '../../api/api.js';
+import { ElMessage } from 'element-plus';
 
 export default {
   data() {
@@ -68,10 +69,8 @@ export default {
       return new Date(date).toLocaleString();
     },
     async handleCardClick(questionId) {
-      // 触发 Vuex action 更新当前问题数据
       this.$store.dispatch('fetchQuestion', questionId);
 
-      // 导航到 QuestionDetails 页面
       this.$router.push({ name: 'QuestionDetails', params: { questionId } });
     },
 
@@ -84,7 +83,7 @@ export default {
       files.forEach(file => {
         api.uploadQuestionImage(file).then(urls => {
           if (Array.isArray(urls)) {
-            this.newQuestion.imageUrl.push(...urls); // 将返回的多个 URL 添加到数组中
+            this.newQuestion.imageUrl.push(...urls);
             console.log('上传的图片 URL:', this.newQuestion.imageUrl);
           }
         }).catch(error => {
@@ -103,9 +102,12 @@ export default {
       console.log('提交问题数据:', questionData);
       api.addQuestion(questionData)
           .then(async response => {
-            if (response.data.status === 'success') {
+            if (response.data.code === 200) {
               // 问题提交成功
-              console.log('问题提交成功');
+              ElMessage({
+                message: '问题提交成功',
+                type: 'success'
+              });
               // 清空输入字段并关闭侧边栏
               this.newQuestion = { userName: '', email: '', content: '', imageUrl: [] };
               this.showSideBar = false;
@@ -127,12 +129,12 @@ export default {
 
 <style>
 .questions-container {
-  position: relative; /* 设置为相对定位，以便内部元素相对于它定位 */
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   margin: 20px;
-  padding-left: 10px; /* 留出空间放置按钮 */
+  padding-left: 10px;
 }
 
 .task {
@@ -308,9 +310,5 @@ export default {
   overflow: hidden; /* 隐藏溢出内容 */
 }
 
-/* 当 showSideBar 为 true 时，侧边栏应该完全显示 */
-.side-bar-show {
-  transform: translateX(0);
-}
 
 </style>

@@ -55,7 +55,7 @@ export default {
       chart: null, // ECharts 实例
       selectedButton: null,
       selectedSearchType: 'current',
-      cypherQuery: 'MATCH (p:中药{name: "防风草"})-[r]->(other) RETURN p, r, other;', // Cypher查询语句
+      cypherQuery: 'MATCH (p:中药{name: "防风草"})-[r]->(other) RETURN p, r, other;',
       tableHeaders: [], // 表格标题
       tableData: [] // 表格数据
     };
@@ -97,18 +97,11 @@ export default {
     },
 
     performGoogleSearch() {
-      // 实现谷歌查询的逻辑
-      // 注意：由于浏览器安全策略，你可能无法直接从前端发起跨域请求到谷歌
-      // ...
       const encodedQuery = encodeURIComponent(this.query);
-
-      // 构建百度搜索的URL
-      // 重定向到百度搜索页面
       window.open(`https://www.google.com.hk/search?q=${encodedQuery}`, '_blank');
     },
 
     performBaiduSearch() {
-      // 对查询关键词进行URL编码
       const encodedQuery = encodeURIComponent(this.query);
       window.open(`https://www.baidu.com/s?wd=${encodedQuery}`, '_blank');
     },
@@ -269,44 +262,44 @@ export default {
 .container {
   display: flex;
   height: 90vh;
-  background-color: #f4f4f8; /* 轻微的背景颜色 */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 现代字体 */
-  border: 1px solid #d3d3d3; /* 整体容器边框 */
+  background-color: #f4f4f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #d3d3d3;
 }
 
 .left-content, .right-content {
-  flex: 1; /* 左右内容区域等分 */
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* 子元素拉伸以填充容器 */
-  border: 1px solid #d3d3d3; /* 左右内容区域的边框 */
-  margin: 10px; /* 间距 */
-  padding: 20px; /* 内边距 */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* 阴影效果 */
-  background-color: white; /* 背景色 */
+  align-items: stretch;
+  border: 1px solid #d3d3d3;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background-color: white;
 }
 
 .search-select {
   padding: 10px;
   margin-right: 10px;
-  border-radius: 8px; /* 增加圆角 */
+  border-radius: 8px;
   border: 1px solid #d3d3d3;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .input-area input {
   width: 300px;
   padding: 10px;
-  border-radius: 8px; /* 增加圆角 */
+  border-radius: 8px;
   border: 1px solid #d3d3d3;
   margin-right: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
-  transition: border-color 0.3s, box-shadow 0.3s; /* 添加过渡效果 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .input-area input:focus {
   border-color: #4a8cc7;
-  box-shadow: 0 0 8px rgba(74, 140, 199, 0.5); /* 焦点时的阴影效果 */
+  box-shadow: 0 0 8px rgba(74, 140, 199, 0.5);
 }
 
 .input-area button {
@@ -316,22 +309,22 @@ export default {
   background-color: #5b9bd5; /* 流行的蓝色调 */
   color: white;
   cursor: pointer;
-  transition: all 0.3s; /* 平滑过渡效果 */
+  transition: all 0.3s;
 }
 
 .input-area button:hover {
-  background-color: #4a8cc7; /* 悬停效果 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 悬停时的阴影 */
+  background-color: #4a8cc7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .input-area button:active {
-  transform: scale(0.98); /* 点击时的缩放效果 */
+  transform: scale(0.98);
 }
 
 .graph-container {
   flex-grow: 1;
   width: 100%;
-  overflow: auto; /* 内容超出时滚动 */
+  overflow: auto;
 }
 
 .query-input-area {
@@ -346,17 +339,17 @@ export default {
   width: 85%;
   max-width: 800px;
   padding: 10px;
-  border-radius: 8px; /* 增加圆角 */
+  border-radius: 8px;
   border: 1px solid #d3d3d3;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-height: 100px;
-  transition: border-color 0.3s, box-shadow 0.3s; /* 添加过渡效果 */
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .query-input-area button {
   padding: 10px 15px;
   border: none;
-  border-radius: 8px; /* 增加圆角 */
+  border-radius: 8px;
   margin-left: 10px;
   cursor: pointer;
   background-color: #5b9bd5;
@@ -365,34 +358,34 @@ export default {
 }
 
 .query-input-area button:hover {
-  background-color: #4a8cc7; /* 悬停效果 */
+  background-color: #4a8cc7;
 }
 
 .query-input-area button:active {
-  background-color: #3678b5; /* 点击时的效果 */
+  background-color: #3678b5;
 }
 
 .data-display-area {
   flex-grow: 1;
   width: 100%;
-  overflow: auto; /* 允许内容过多时滚动 */
+  overflow: auto;
 }
 
 .data-display-area table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 表格阴影 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .data-display-area th, .data-display-area td {
   border: 1px solid #ddd;
   padding: 8px;
-  transition: background-color 0.3s; /* 平滑背景色变化 */
+  transition: background-color 0.3s;
 }
 
 .data-display-area th {
-  background-color: #e3e4e6; /* 表头背景色 */
+  background-color: #e3e4e6;
 }
 
 .data-display-area tr:nth-child(even) {
@@ -400,7 +393,7 @@ export default {
 }
 
 .data-display-area tr:hover {
-  background-color: #e3e4e6; /* 悬停行的背景色 */
+  background-color: #e3e4e6;
 }
 </style>
 

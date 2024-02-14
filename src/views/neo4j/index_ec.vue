@@ -52,7 +52,7 @@ import { CanvasRenderer } from 'echarts/renderers';
 import api from '../../api/api';
 import NodeDetailsModal from '../neo4j/components/NodeDetailsModal.vue'
 import RelationshipDetailsModal from "../neo4j/components/RelationshipDetailsModal.vue";
-
+import { ElMessage } from 'element-plus';
 echarts.use([
   TitleComponent,
   TooltipComponent,
@@ -176,7 +176,7 @@ export default {
           show: true, // 显示标签
           //formatter: `{b}` // `{b}` 表示使用节点的name属性作为标签
           formatter: function (params) {
-            return params.data.name; // 确保这里返回的是一个字符串
+            return params.data.name;
           }
         };
         node.value = node.label;
@@ -184,7 +184,7 @@ export default {
         node.draggable = true;
       });
 
-      // 这里设置连线的标签显示
+
       graphData.edges.forEach(function (edge) {
         edge.label = {
           show: true, // 显示标签
@@ -205,7 +205,7 @@ export default {
             data: graphData.nodes.map(node => node.value).filter((v, i, a) => a.indexOf(v) === i)
           }
         ],
-        animation: false, // 关闭动画可以提高性能
+        animation: false,
         animationDuration: 1500,
         animationEasingUpdate: 'quinticInOut',
         series: [
@@ -223,7 +223,7 @@ export default {
               normal: {
                 show: true,
                 textStyle: {
-                  fontSize: 10 // 根据需要调整字体大小
+                  fontSize: 10
                 },
                 formatter: function (params) {
                   return params.data.attributes; // 使用连线的attributes属性作为标签
@@ -285,13 +285,20 @@ export default {
       console.log("关系数据:", dataToSend);
       // 调用API更新关系数据
       api.updateRelationshipById(dataToSend).then(response => {
-        console.log("关系数据更新成功:", response);
-        this.isRelationshipModalVisible = false;
-        this.fetchGraphData(); // 刷新图表数据
-      }).catch(error => {
-        console.error("更新关系数据出错:", error);
-        alert("更新关系数据失败");
-      });
+        if (response.data.code === 200) {
+          ElMessage({
+            message: response.data.info,
+            type: 'success'
+          })
+          this.isRelationshipModalVisible = false;
+          this.fetchGraphData(); // 刷新图表数据
+        } else {
+          ElMessage({
+            message: response.data.info,
+            type: 'error'
+          })
+        }
+      })
     },
 
     saveNode(updatedData) {
@@ -308,12 +315,21 @@ export default {
       api.updateNodeInfo(dataToSend).then((response) => {
         console.log("发送数据:", dataToSend);
         console.log("响应:", response);
-        this.isNodeModalVisible = false;
-        this.fetchGraphData(); // 刷新图表数据
-      }).catch((error) => {
-        console.error("更新节点信息出错:", error);
-        alert("更新节点信息失败");
-      });
+        console.log("节点数据更新成功:", response.data.code);
+        if (response.data.code === 200) {
+          ElMessage({
+            message: response.data.info,
+            type: 'success'
+          })
+          this.isNodeModalVisible = false;
+          this.fetchGraphData(); // 刷新图表数据
+        } else {
+          ElMessage({
+            message: response.data.info,
+            type: 'error'
+          })
+        }
+      })
     },
     exportImage() {
       if (this.myChart) {
@@ -358,14 +374,13 @@ export default {
       const nodeToFocus = nodes.find(node => node.name === nodeName);
 
       if (nodeToFocus) {
-        // 计算节点的位置（这里是一个简化的示例，实际位置可能需要根据布局和缩放比例来计算）
         const nodePosition = { x: nodeToFocus.x, y: nodeToFocus.y };
 
         // 聚焦到该节点
         this.myChart.setOption({
           series: [{
             center: [nodePosition.x, nodePosition.y],
-            zoom: 2, // 放大比例，根据需要调整
+            zoom: 2,
           }]
         });
 

@@ -43,7 +43,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import api from '../../api/api.js'; // 确保路径正确
+import api from '../../api/api.js';
 import Comment from '../questions/compenonts/Comment.vue'; // 导入评论组件
 
 export default {
@@ -154,18 +154,18 @@ export default {
 <style>
 .question-details-container {
   max-width: 800px;
-  margin: 20px auto; /* 增加上下外边距以便与其他内容分隔 */
+  margin: 20px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e0e0e0; /* 可以增加一个边框 */
+  border: 1px solid #e0e0e0;
 }
 
 .question {
-  margin-bottom: 30px; /* 增加与评论区域的空间 */
-  padding-bottom: 20px; /* 在问题详情底部增加内边距 */
-  border-bottom: 1px solid #e0e0e0; /* 在问题和评论区域之间添加边界线 */
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .user-avatar {
@@ -181,41 +181,41 @@ export default {
   margin-bottom: 15px;
 }
 
-.question-text, .comment-content, .sub-comment-content {
+.question-text{
   flex-grow: 1;
 }
 
 
 h2 {
   margin: 0 0 15px 0;
-  color: #2c3e50; /* 标题颜色 */
-  font-size: 24px; /* 标题字体大小 */
+  color: #2c3e50;
+  font-size: 24px;
 }
 
 h3, h4, h5 {
   margin: 0;
-  color: #34495e; /* 子标题颜色 */
-  font-weight: 600; /* 字体加粗 */
+  color: #34495e;
+  font-weight: 600;
 }
 
 .question-text p, .comment-content p, .sub-comment-content p {
-  color: #7f8c8d; /* 文本颜色 */
-  line-height: 1.8; /* 行高 */
-  font-size: 16px; /* 字体大小 */
+  color: #7f8c8d;
+  line-height: 1.8;
+  font-size: 16px;
 }
 
-.question-images, .comment-images, .sub-comment-images {
-  display: flex; /* 应用弹性盒子布局 */
-  flex-wrap: wrap; /* 允许内容换行 */
-  gap: 10px; /* 设置图片之间的间隔 */
+.question-images{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .question-images img, .comment-images img, .sub-comment-images img {
-  max-width: 100%; /* 确保图片最大宽度不超过容器宽度 */
-  max-height: 300px; /* 可以调整为您希望的最大高度 */
-  width: auto; /* 宽度自动，确保图片等比例缩放 */
-  height: auto; /* 高度自动，确保图片等比例缩放 */
-  object-fit: contain; /* 保证图片不变形 */
+  max-width: 100%;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   cursor: pointer;
   border-radius: 5px;
   transition: transform 0.3s ease;
@@ -223,24 +223,24 @@ h3, h4, h5 {
 
 
 .question-images img:hover, .comment-images img:hover, .sub-comment-images img:hover {
-  transform: scale(1.05); /* You can remove or adjust the scale factor if you want a different hover effect */
+  transform: scale(1.05);
 }
 
 
 .comments {
-  background-color: #f0f0f0; /* 设置一个浅灰色背景，确保简洁 */
-  padding: 15px; /* 稍微减少内边距 */
-  border-radius: 5px; /* 减小边框半径，以适应更简约的设计 */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); /* 使用更细致的阴影效果 */
-  margin-top: 20px; /* 减少与问题详情的间距 */
-  border: 1px solid #e1e1e1; /* 设置一个更细微的边框 */
-  margin-bottom: 20px; /* 添加底部外边距 */
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  margin-top: 20px;
+  border: 1px solid #e1e1e1;
+  margin-bottom: 20px;
 }
 
 
 .comment-box {
   position: fixed;
-  right: -300px; /* 初始状态在屏幕外 */
+  right: -300px;
   top: 0;
   width: 300px;
   height: 100%;
@@ -249,11 +249,10 @@ h3, h4, h5 {
   z-index: 100;
   overflow-y: auto;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-  transition: right 0.3s ease; /* 平滑滑动效果 */
+  transition: right 0.3s ease;
 }
-/* 当评论框应当显示时 */
 .show-comment-box .comment-box {
-  right: 0; /* 滑入屏幕 */
+  right: 0;
 }
 
 .comment-box input, .comment-box textarea {
@@ -299,8 +298,8 @@ h3, h4, h5 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
-  z-index: 99; /* 确保覆盖层位于内容之下，侧滑框之上 */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
 }
 .add-comment-btn {
   padding: 8px 15px;
@@ -310,11 +309,11 @@ h3, h4, h5 {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 10px; /* 添加一些间距 */
-  display: block; /* 块级显示 */
-  width: max-content; /* 按钮宽度根据内容调整 */
-  margin-left: auto; /* 左边距自动，使按钮靠右对齐 */
-  margin-right: 0; /* 右边距为0 */
+  margin-top: 10px;
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .add-comment-btn:hover {

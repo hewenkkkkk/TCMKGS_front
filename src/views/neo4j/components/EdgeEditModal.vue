@@ -70,15 +70,15 @@ export default {
 <style>
 .modal {
   position: fixed;
-  right: 0; /* 调整为右侧显示 */
+  right: 0;
   top: 0;
   width: 30%; /* 或者根据需要调整宽度 */
   height: 100%;
-  background-color: transparent; /* 设置为完全透明 */
+  background-color: transparent;
   display: flex;
-  justify-content: flex-start; /* 内容靠左排列 */
+  justify-content: flex-start;
   align-items: center;
-  cursor: move; /* 表示可移动的光标 */
+  cursor: move;
 }
 
 .modal-content {
@@ -87,7 +87,7 @@ export default {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
-  width: 100%; /* 调整宽度为100%以填充父容器 */
+  width: 100%;
   position: relative;
 }
 

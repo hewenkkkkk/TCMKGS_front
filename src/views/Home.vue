@@ -26,7 +26,7 @@
 
 <script>
 import api from "../api/api.js";
-
+import { ElMessage } from 'element-plus';
 
 export default {
   created(){
@@ -89,17 +89,22 @@ export default {
         alert("请先选择一个文件");
         return;
       }
-      // 上传文件逻辑...
-      try {
+      // 上传文件逻辑
         const response = await api.uploadNeo4jData(this.fileContent);
-        console.log(response.data);
-        alert("文件上传成功");
-      } catch (error) {
-        console.error(error);
-        alert("上传失败");
-      }
-    },
+        if (response.data.code === 200) {
+          ElMessage({
+            message: response.data.info,
+            type: 'success'
+          })
+        }else if (response.data.code === 901)
+          ElMessage({
+            message: response.data.info,
+            type: 'error'
+          })
+        }
+
   },
+
 };
 </script>
 
@@ -171,9 +176,9 @@ h2 {
   background-color: #218838;
 }
 .modal-image {
-  max-width: 100%; /* 确保图片不会超过容器宽度 */
-  height: auto; /* 保持图片原始宽高比 */
-  margin-bottom: 10px; /* 添加一些间距 */
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .close-button {
@@ -200,7 +205,7 @@ h2 {
 
 .weather-widget {
   flex: 1;
-  max-width: 230px; /* 限制天气插件的最大宽度 */
+  max-width: 230px;
 }
 
 .upload-container {

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-// vite.config.ts
+
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -12,11 +12,9 @@ import ElementPlus from 'unplugin-element-plus/vite'
 
 export default defineConfig({
   plugins: [
-      // @ts-ignore
       ElementPlus(),
       vue(),
       AutoImport({
-          // @ts-ignore
           import: ["vue"],
           resolvers: [
               ElementPlusResolver(),

@@ -21,7 +21,7 @@
 <script>
 import cytoscape from 'cytoscape';
 import api from '../../api/api.js'
-import NodeEditModal from '../neo4j/components/NodeEditModal.vue'// 确保路径正确
+import NodeEditModal from '../neo4j/components/NodeEditModal.vue'
 import EdgeEditModal from '../neo4j/components/EdgeEditModal.vue'
 
 export default {
@@ -50,7 +50,6 @@ export default {
         console.log(response.data);
         alert("连线信息更新成功");
         this.isEdgeModalVisible = false;
-        // 可能需要重新获取图形数据并刷新图形
         await this.fetchGraphData();
         this.initializeGraph();
       } catch (error) {
@@ -129,7 +128,7 @@ export default {
 
       });
 
-      // 边的点击事件处理
+
       let tappedBefore;
       let tappedTimeout;
       cy.on('tap', 'edge', (evt) => {
@@ -202,7 +201,6 @@ export default {
         console.log(response.data);
         alert("连线删除成功");
 
-        // 可能需要重新获取图形数据并刷新图形
         await this.fetchGraphData();
         this.initializeGraph();
       } catch (error) {
@@ -228,7 +226,7 @@ export default {
         data: {
           id: node.id,
           name: node.name,
-          attributes: node.attributes, // 确保这些字段在 graphData 中
+          attributes: node.attributes,
           label: node.label,
           color: this.getNodeColor(node.label)
         }
@@ -255,9 +253,9 @@ export default {
 
 <style>
 .graph-container {
-  position: relative; /* 容器相对定位 */
-  width: 100%; /* 根据需要调整宽度 */
-  height: 800px; /* 根据需要调整高度 */
+  position: relative;
+  width: 100%;
+  height: 800px;
 }
 #cy {
   width: 100%;

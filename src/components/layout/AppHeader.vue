@@ -11,14 +11,8 @@
         router="true"
     >
       <el-menu-item index="/">主页</el-menu-item>
-      <el-menu-item index="/musicplayer">音乐</el-menu-item>
-      <el-menu-item index="/bilibili">追番</el-menu-item>
 
-      <el-sub-menu index="2-4">
-        <template #title>管理员</template>
-        <el-menu-item index="/login">登录</el-menu-item>
-        <el-menu-item index="2-4-2">登出</el-menu-item>
-      </el-sub-menu>
+
     </el-menu>
     <el-header>
       <div class="time-display">

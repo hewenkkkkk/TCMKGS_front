@@ -11,7 +11,7 @@
           <button class="reply-btn" @click="$emit('reply', comment.comment_id)">
             <i class="fa fa-reply"></i> 回复
           </button>
-          <!-- 显示/隐藏子评论按钮，只有当存在子评论时显示 -->
+
           <button v-if="comment.subComments && comment.subComments.length" @click="toggleSubComments" class="toggle-subcomments-btn">
             <i class="fa" :class="{'fa-chevron-down': !showSubComments, 'fa-chevron-up': showSubComments}"></i>
             {{ showSubComments ? '隐藏子评论' : '显示子评论' }}
@@ -64,7 +64,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .comment-time {
-  display: block; /* 或者 inline-block，根据需要 */
+  display: block;
   margin-top: 4px;
   font-size: 12px;
   color: rgb(9, 8, 8);
